@@ -897,7 +897,6 @@ e_flip_coords <- function(e) {
 #'
 #' @inheritParams e_bar
 #'
-#' @note Do not use \code{e_arrange} in R markdown or Shiny.
 #'
 #' @seealso \href{https://echarts.apache.org/en/option.html#textStyle}{official documentation}
 #'
