@@ -48,7 +48,7 @@ df <- airquality
 df$Month <- sprintf("%02d", df$Month)
 df$Day <- sprintf("%02d", df$Day)
 
-df$date <- paste("1973", df$Month, df$Day, sep = "-") |> 
+df$Date <- paste("1973", df$Month, df$Day, sep = "-") |> 
   as.Date(format = "%Y-%m-%d")
 ```
 
@@ -56,25 +56,25 @@ df$date <- paste("1973", df$Month, df$Day, sep = "-") |>
 library(echarts4r) # load echarts4r
 
 df |> 
-  e_charts(x = State) |> # initialise and set x
-  e_line(serie = Population) # add a line
+  e_charts(x = Date) |> # initialise and set x
+  e_line(serie = Temp) # add a line
 ```
 
-If you are not at ease with bare column names you can use the escape hatches ending in `_`.
+If you wish to use column names as quoted strings you can use the escape hatches with functions ending in `_`.
 
 ```{r, eval = FALSE}
 df |> 
-  e_charts_("State") |> 
-  e_line_("Population")
+  e_charts_("Date") |> 
+  e_line_("Temp")
 ```
 
-The easiest way is to use the `|>` operator to add plots and options.
+The easiest way to build your charts is to use the `|>` pipe operator to add plots, elements and options. Notice that the charts are interactable without any specific code additions. Try expanding the average wind speed view by clicking on *Temp* in the legend to disable the temperature line.
 
 ```{r}
 df |> 
-  e_charts(State) |> # initialise and set x
-  e_line(Population) |>  # add a line
-  e_area(Income) # add area
+  e_charts(Date) |> 
+  e_line(Temp) |>  # add a line
+  e_area(Wind) # add area
 ```
 
 ## Options
