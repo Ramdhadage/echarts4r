@@ -155,7 +155,7 @@ df |>
 
 ## Navigate options
 
-`echarts4r` is highly customisable, there are too many options to have them all hard-coded in the package but rest assured; they are available, and can be passe to `...`. You will find all these options in the [official documentation](https://echarts.apache.org/en/option.html).
+`echarts4r` is highly customisable. There are too many options to have them all hard-coded in the package but rest assured; they are available, and can be passed to `...`. You will find all these options in the [official documentation](https://echarts.apache.org/en/option.html).
 
 <a href="https://echarts.apache.org/en/option.html" class="btn btn-default" target="_blank">
   <i class="fa fa-book"></i>
@@ -168,24 +168,26 @@ For instance the documentation for the tooltip looks like this:
   <img src="https://echarts4r.john-coene.com/articles/docs.png" class="img-responsive responsive-img" />
 </a>
 
-Therefore if we want to change our tooltip to an [axisPointer](https://echarts.apache.org/en/option.html#tooltip.axisPointer) we can do so by passing a list to `axisPointer`.
+Therefore if we want to change our tooltip to an [axisPointer](https://echarts.apache.org/en/option.html#tooltip.axisPointer) we can do so by passing a list to `axisPointer`.   
+If an option takes a single value, we don't need to wrap it in a list. For example, we can try changing the tooltip [backgroundColor](https://echarts.apache.org/en/option.html#tooltip.backgroundColor).
 
 ```{r}
 df |> 
-  e_charts(State) |> # initialise and set x
-  e_line(Population, smooth = TRUE) |>  # add a line
-  e_area(Income, smooth = TRUE) |>  # add area
-  e_x_axis(name = "States") |>  # add x axis name
-  e_title("US States", "Population & Income") |>  # Add title & subtitle
+  e_charts(Date) |> # initialise and set x
+  e_line(Temp, smooth = TRUE) |>  # add a line
+  e_area(Wind, smooth = TRUE) |> # add area
+  e_axis_labels(x = "1973.") |> # axis label
+  e_title("New York Air Quality Data", "Maximum daily temperature and mean wind speed") |>  # Add title & subtitle
   e_theme("infographic") |>  # theme
   e_legend(right = 0) |> # move legend to the bottom
   e_tooltip(
     axisPointer = list(
       type = "cross"
-    )
+    ),
+    backgroundColor = "#FFFFFF" # hex code for white color
   ) 
 ```
 
 Once you come to the realisation that JSON ~= `list` in R, it's pretty easy.
 
-You're in on the basics, go to the [advanced](https://echarts4r.john-coene.com/articles/advanced.html) section or navigate the site to discover how add multiple linked graphs, draw on globes, use the package in shiny, and more.
+You're caught up on the basics, go to the [advanced](https://echarts4r.john-coene.com/articles/advanced.html) section or navigate the site to discover how to add multiple linked graphs, draw on globes, use the package in shiny, and more.
